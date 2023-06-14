@@ -134,7 +134,7 @@ namespace api_auth.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Mail)
             }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = user.IsAppUser! ? DateTime.UtcNow.AddDays(7) : DateTime.UtcNow.AddYears(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
