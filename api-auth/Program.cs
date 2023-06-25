@@ -1,13 +1,6 @@
 ﻿using System.Net;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using api_auth;
 using Microsoft.EntityFrameworkCore;
-using api_auth.Models;
-using Microsoft.AspNetCore.Server.Kestrel.Https;
 using System.Security.Cryptography.X509Certificates;
 using api_auth.Repositories;
 using api_auth.Services;
@@ -38,18 +31,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMemoryCache();
 builder.Services.AddCors();
 
-/*
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IQuoteService, QuoteService>();
-builder.Services.AddScoped<IQuotePrintService, QuotePrintService>();
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IQuoteRepository, QuoteRepository>();
-builder.Services.AddScoped<IQuotePrintRepository, QuotePrintRepository>();
-
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-*/
-
+//DI
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IInstanceRepository, InstanceRepository>();
